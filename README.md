@@ -15,6 +15,11 @@ Upon completion, users should be able to:
 
 The purpose of this project is to build upon the below skills and concepts:
 
+* React Components, props & state
+* Snapshot Testing
+
+## Technologies
+
 * React
 * Jest
 * JSX
@@ -23,9 +28,10 @@ The purpose of this project is to build upon the below skills and concepts:
 ## Languages
 
 * JavaScript
-
+* HTML
+* CSS
 ## Status
 
-Project status: _Ongoing_
+Project status: _In progress_
 
 
