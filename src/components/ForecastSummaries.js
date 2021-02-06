@@ -6,7 +6,6 @@ import "../styles/ForecastSummaries.css";
 
 const ForecastSummaries = ({ forecasts }) => (
   <div className="forecast-summaries">
-    ;
     {forecasts.map((forecast) => (
       <ForecastSummary
         key={forecast.date}

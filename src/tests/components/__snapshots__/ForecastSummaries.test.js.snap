@@ -5,7 +5,6 @@ exports[`ForecastSummaries renders correctly 1`] = `
   <div
     class="forecast-summaries"
   >
-    ;
     <div
       class="forecast-summary"
       data-testid="forecast-summary"
@@ -13,7 +12,7 @@ exports[`ForecastSummaries renders correctly 1`] = `
       <div
         class="forecast-summary__date"
       >
-        1111111
+        Thu 1st Jan
       </div>
       <div
         class="forecast-summary__icon"
@@ -42,7 +41,7 @@ exports[`ForecastSummaries renders correctly 1`] = `
       <div
         class="forecast-summary__date"
       >
-        2222222
+        Thu 1st Jan
       </div>
       <div
         class="forecast-summary__icon"
