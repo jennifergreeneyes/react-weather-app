@@ -3,6 +3,7 @@ import LocationDetails from "./LocationDetails";
 import ForecastSummaries from "./ForecastSummaries";
 import ForecastDetails from "./ForecastDetails";
 import getForecast from "../requests/getForecast";
+import SearchForm from "./SearchForm";
 
 import "../styles/App.css";
 
@@ -10,25 +11,55 @@ const App = () => {
   const [forecasts, setForecasts] = useState([]);
   const [location, setLocation] = useState({ city: "", country: "" });
   const [selectedDate, setSelectedDate] = useState(0);
+  const [searchText, setSearchText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    getForecast(setSelectedDate, setForecasts, setLocation);
-  }, [0]);
+    getForecast(
+      searchText,
+      setSelectedDate,
+      setForecasts,
+      setLocation,
+      setErrorMessage
+    );
+  }, []);
 
   const selectedForecast = forecasts.find(
     (forecast) => forecast.date === selectedDate
   );
+  const handleCitySearch = () => {
+    getForecast(
+      searchText,
+      setErrorMessage,
+      setSelectedDate,
+      setForecasts,
+      setLocation
+    );
+  };
   const handleForecastSelect = (date) => {
     setSelectedDate(date);
   };
   return (
     <div className="weather-app">
-      <LocationDetails city={location.city} country={location.country} />
-      <ForecastSummaries
-        forecasts={forecasts}
-        onForecastSelect={handleForecastSelect}
+      <SearchForm
+        searchText={searchText}
+        setSearchText={setSearchText}
+        onSubmit={handleCitySearch}
       />
-      {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+      <LocationDetails
+        city={location.city}
+        country={location.country}
+        errorMessage={errorMessage}
+      />
+      {!errorMessage && (
+        <>
+          {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+          <ForecastSummaries
+            forecasts={forecasts}
+            onForecastSelect={handleForecastSelect}
+          />
+        </>
+      )}
     </div>
   );
 };
